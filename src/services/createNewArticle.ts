@@ -22,8 +22,8 @@ export async function createNewArticle(prevState: any, formData: FormData) {
       data: data,
     });
     revalidatePath("/");
-    return { message: "Created", articleId: article.id };
+    return { message: "Created", articleId: article.id, error: false };
   } catch (e) {
-    return { message: e };
+    return { message: e, error: true };
   }
 }

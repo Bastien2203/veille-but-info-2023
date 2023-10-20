@@ -1,5 +1,5 @@
 import { Modal } from "@/components/common/Modal";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { createNewArticle } from "@/services/createNewArticle";
 import { redirect } from "next/navigation";
 // @ts-expect-error
@@ -20,6 +20,9 @@ export const NewArticleModal = (
   const [state, formAction] = useFormState(createNewArticle, initialState);
 
   useEffect(() => {
+    if (state?.error === true) {
+      alert("Nom d'article déjà prit");
+    }
     if (state?.articleId) {
       redirect(`/article/${state?.articleId}`);
     }
