@@ -2,7 +2,7 @@
 
 import prisma from "@/db";
 import { z } from "zod";
-import { revalidatePath, unstable_cache } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 const schema = z.object({
   name: z.string().min(1),
