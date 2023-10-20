@@ -2,8 +2,8 @@ export const ArticleIcon = () => {
   return (
     <svg
       fill="white"
-      height="40px"
-      width="40px"
+      height="30px"
+      width="30px"
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"

@@ -6,7 +6,7 @@ export const AppBar = (props: { title: string }) => {
       <div className="container mx-auto">
         <div className="flex items-center gap-2">
           <ArticleIcon />
-          <h1 className="text-white text-lg font-medium">{props.title}</h1>
+          <h1 className="text-white text-xl font-medium">{props.title}</h1>
         </div>
       </div>
     </div>

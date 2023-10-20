@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AppBar title="Article App" />
-        {children}
+        <main className="py-4 px-16">{children}</main>
       </body>
     </html>
   );
