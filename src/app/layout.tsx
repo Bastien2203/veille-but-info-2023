@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppBar } from "@/components/common/AppBar";
+import { FloatingButton } from "@/components/common/FloatingButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppBar title="Article App" />
         <main className="py-4 px-16">{children}</main>
+        <FloatingButton />
       </body>
     </html>
   );

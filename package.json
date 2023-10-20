@@ -15,12 +15,13 @@
     "next": "13.5.6",
     "prisma": "^5.4.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",

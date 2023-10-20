@@ -6,9 +6,10 @@ export default async function Home() {
 
   return (
     <>
-      <h2 className="text-lg">Tout les articles</h2>
       <div className="flex justify-center">
         <div className="flex flex-col gap-2">
+          <h2 className="text-2xl py-4">Tout les articles</h2>
+
           {articles.map((article) => (
             <ArticleCard article={article} key={article.id} />
           ))}
