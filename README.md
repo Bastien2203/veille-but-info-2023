@@ -11,7 +11,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Generate migrations data :
+Generate migrations and data :
 ```bash
 yarn prisma:migrate
 ```
@@ -20,16 +20,16 @@ yarn prisma:migrate
 yarn generate:data
 ```
 
-First, run the development server:
+Install dependancies
+
+```
+yarn install
+```
+
+Run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
