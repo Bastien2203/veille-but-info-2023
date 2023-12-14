@@ -1,9 +1,6 @@
 import { Modal } from "@/components/common/Modal";
-import { PropsWithChildren, useEffect } from "react";
-import { createNewArticle } from "@/services/createNewArticle";
-import { redirect, useRouter } from "next/navigation";
-// @ts-expect-error
-import { experimental_useFormState as useFormState } from "react-dom";
+import { PropsWithChildren, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Article } from ".prisma/client";
 
 const initialState: Article = {
@@ -21,7 +18,7 @@ export const NewArticleModal = (
   }>,
 ) => {
   const router = useRouter();
-  const [article, setArticle] = useFormState<Article>(initialState);
+  const [article, setArticle] = useState<Article>(initialState);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
