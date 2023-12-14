@@ -1,14 +1,17 @@
 import { Modal } from "@/components/common/Modal";
 import { PropsWithChildren, useEffect } from "react";
 import { createNewArticle } from "@/services/createNewArticle";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 // @ts-expect-error
 import { experimental_useFormState as useFormState } from "react-dom";
+import { Article } from ".prisma/client";
 
-const initialState = {
+const initialState: Article = {
   name: "",
   description: "",
   content: "",
+  posted_at: new Date(),
+  id: 0,
 };
 
 export const NewArticleModal = (
@@ -17,16 +20,14 @@ export const NewArticleModal = (
     setVisibility: (visibilty: boolean) => void;
   }>,
 ) => {
-  const [state, formAction] = useFormState(createNewArticle, initialState);
+  const router = useRouter();
+  const [article, setArticle] = useFormState<Article>(initialState);
 
-  useEffect(() => {
-    if (state?.error === true) {
-      alert("Nom d'article déjà prit");
-    }
-    if (state?.articleId) {
-      redirect(`/article/${state?.articleId}`);
-    }
-  }, [state]);
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    setArticle({ ...article, [e.target.name]: e.target.value });
+  }
 
   return (
     <Modal
@@ -34,13 +35,20 @@ export const NewArticleModal = (
       setVisibility={props.setVisibility}
       title="Nouvel Article"
     >
-      <form className="flex flex-col gap-4" action={formAction}>
-        <input name="name" placeholder="Name" className="border-b-2" required />
+      <div className="flex flex-col gap-4">
+        <input
+          name="name"
+          placeholder="Name"
+          className="border-b-2"
+          required
+          onChange={handleChange}
+        />
         <textarea
           name="description"
           placeholder="Description"
           className="border-b-2"
           required
+          onChange={handleChange}
         />
         <textarea
           name="content"
@@ -48,6 +56,7 @@ export const NewArticleModal = (
           className="border-b-2"
           rows={6}
           required
+          onChange={handleChange}
         />
         <button
           className="bg-green-700 text-white p-4 rounded font-bold text-lg shadow hover:shadow-lg"
@@ -55,7 +64,7 @@ export const NewArticleModal = (
         >
           Valider
         </button>
-      </form>
+      </div>
     </Modal>
   );
 };
