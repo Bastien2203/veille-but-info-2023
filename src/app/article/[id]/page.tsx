@@ -1,17 +1,17 @@
-import Article from "@/components/common/Article";
-import { Suspense } from "react";
-import Loading from "@/app/loading";
+import { useParams } from "next/navigation";
+import db from "@/db";
 
-export default async function ArticlePage({
-  params,
-}: {
-  params: { id: string };
-}) {
+async function ArticlePage({ params }: { params: { id: string } }) {
+  const article = await db.article.findUniqueOrThrow({
+    where: { id: Number(params.id) },
+  });
+
   return (
-    <>
-      <Suspense fallback={<Loading />}>
-        <Article params={params} />
-      </Suspense>
-    </>
+    <div>
+      <h1 className="text-2xl">{article.name}</h1>
+      <p>{article.content}</p>
+    </div>
   );
 }
+
+export default ArticlePage;

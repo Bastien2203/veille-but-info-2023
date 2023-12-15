@@ -1,4 +1,4 @@
-import { ArticleList } from "@/components/common/ArticleList";
+import { ArticleList } from "@/components/server-components/ArticleList";
 import { Suspense } from "react";
 import Loading from "@/app/loading";
 
